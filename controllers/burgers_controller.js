@@ -9,7 +9,7 @@ router.get("/", function (req, res) {
       burger: dbBurgers
     })
     // res.json(dbBurgers)
-  }).catch(function (err) {
+  }).then(function (err) {
     console.log(err);
   })
 });
@@ -22,20 +22,19 @@ router.post("/", function (req, res) {
 
 });
 router.put("/:id", function (req, res) {
-
+  
   db.Burgers.update(
-    req.params,
+    {
+       devoured: true
+    },
     {
       where: {
         id: req.params.id
       }
+  
     }).then(function (dbBurgers) {
-      // res.render("index", {
-      //   devoured: dbBurgers
-      // })
-      // res.json(dbBurgers)
-      res.sendStatus(200);
-    })
+        res.sendStatus(200);
+    });
 
 });
 
