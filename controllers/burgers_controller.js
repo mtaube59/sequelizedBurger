@@ -9,7 +9,7 @@ router.get("/", function (req, res) {
       burger: dbBurgers
     })
     // res.json(dbBurgers)
-  }).then(function (err) {
+  }).catch(function (err) {
     console.log(err);
   })
 });
